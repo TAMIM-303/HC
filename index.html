@@ -1,0 +1,25 @@
+<!-- index.html -->
+<div id="otp-container">
+    <h2>🎯 সর্বশেষ OTP (Auto-Updated)</h2>
+    <div id="live-otp"></div>
+</div>
+
+<script>
+    // GitHub Pages শুধু স্ট্যাটিক জাভাস্ক্রিপ্ট সাপোর্ট করে, তাই ফেক ডাটা ব্যবহার করা হলো
+    const updateUI = (data) => {
+        document.getElementById("live-otp").innerHTML = `
+            <p>⏰ <strong>সময়:</strong> ${data.time}</p>
+            <p>📞 <strong>নাম্বার:</strong> ${data.number}</p>
+            <p>🔐 <strong>OTP:</strong> <span class="blink">${data.otp}</span></p>
+        `;
+    };
+
+    // ডেমো ডাটা (বাস্তবে API কল করতে হবে)
+    setInterval(() => {
+        updateUI({
+            time: new Date().toLocaleString(),
+            number: "251" + Math.floor(Math.random() * 10000000),
+            otp: Math.floor(100000 + Math.random() * 900000)
+        });
+    }, 5000);
+</script>
